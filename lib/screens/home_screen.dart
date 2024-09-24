@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,7 +15,11 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text("Home"),
       ),
-      body: TextButton(onPressed: () {}, child: const Text("go to")),
+      body: TextButton(
+          onPressed: () {
+            context.go("/profile/tarik");
+          },
+          child: const Text("go to")),
     );
   }
 }

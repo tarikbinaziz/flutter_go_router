@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({super.key});
+  String name;
+  ProfileScreen({super.key, required this.name});
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -12,9 +13,14 @@ class _HomeScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Home"),
+        title: const Text("Profile"),
       ),
-      body: TextButton(onPressed: () {}, child: const Text("go to")),
+      body: Column(
+        children: [
+          Text("Profile: ${widget.name}"),
+          TextButton(onPressed: () {}, child: const Text("go to home")),
+        ],
+      ),
     );
   }
 }

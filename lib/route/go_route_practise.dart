@@ -31,7 +31,7 @@ final router = GoRouter(
               builder: (context, state) => const HomeScreen(),
               routes: [
                 GoRoute(
-                  path: '/homedetails',
+                  path: 'homedetails',
                   builder: (context, state) => const HomeDetailsScreen(),
                 ),
               ],
@@ -39,7 +39,7 @@ final router = GoRouter(
           ],
         ),
         StatefulShellBranch(
-          navigatorKey: _sectionNavigatorKey,
+          //  navigatorKey: _sectionNavigatorKey,
           routes: [
             GoRoute(
               path: '/profile',
@@ -48,7 +48,7 @@ final router = GoRouter(
           ],
         ),
         StatefulShellBranch(
-          navigatorKey: _sectionNavigatorKey,
+          // navigatorKey: _sectionNavigatorKey,
           routes: [
             GoRoute(
               path: '/fruite',
@@ -58,17 +58,17 @@ final router = GoRouter(
         ),
       ],
     ),
-    GoRoute(
-      path: '/',
-      builder: (context, state) => const HomeScreen(),
-    ),
-    GoRoute(
-      path: '/fruite',
-      builder: (context, state) => FruitScreen(),
-    ),
-    GoRoute(
-      path: '/profile',
-      builder: (context, state) => ProfileScreen(),
-    ),
+    // GoRoute(
+    //   path: '/',
+    //   builder: (context, state) => const HomeScreen(),
+    // ),
+    // GoRoute(
+    //   path: '/fruite',
+    //   builder: (context, state) => FruitScreen(),
+    // ),
+    // GoRoute(
+    //   path: '/profile',
+    //   builder: (context, state) => ProfileScreen(),
+    // ),
   ],
 );

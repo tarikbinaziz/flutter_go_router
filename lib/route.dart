@@ -396,6 +396,28 @@ ElevatedButton(
         return VerifyOtpScreen(data: data);
       },
     ),
+
+    /*
+    // Example button to navigate to the verifyOtpScreen
+ElevatedButton(
+  onPressed: () {
+    // Prepare the data to pass
+    final Map<String, dynamic> otpData = {
+      'phone': '1234567890',
+      'otp': '1234',
+      'isSignUp': true,
+    };
+
+    // Navigate using go_router
+    context.goNamed(
+      'verifyOtpScreen',     // The route name
+      extra: otpData,        // Pass the Map<String, dynamic> as extra
+    );
+  },
+  child: Text('Verify OTP'),
+)
+
+    */
     GoRoute(
       path: '/changePass',
       name: 'changePass',
@@ -404,6 +426,23 @@ ElevatedButton(
         return PasswordChangeScreen(token: token);
       },
     ),
+    /*
+    // Example button to navigate to the changePass screen
+ElevatedButton(
+  onPressed: () {
+    // The token required for changing the password
+    final String token = 'sample-reset-token-12345';
+
+    // Navigate using go_router
+    context.goNamed(
+      'changePass',          // The route name
+      extra: token,          // Pass the token as extra
+    );
+  },
+  child: Text('Change Password'),
+)
+
+    */
     GoRoute(
       path: '/schedulePickupScreen',
       name: 'schedulePickupScreen',

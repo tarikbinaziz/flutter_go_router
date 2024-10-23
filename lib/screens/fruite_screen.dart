@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class FruitScreen extends StatefulWidget {
-  Fruit fruitModel;
-  FruitScreen({super.key, required this.fruitModel});
+  Fruit? fruitModel;
+  FruitScreen({
+    super.key,
+  });
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -17,8 +20,12 @@ class _HomeScreenState extends State<FruitScreen> {
       ),
       body: Column(
         children: [
-          Text("Fruite: ${widget.fruitModel.name}"),
-          TextButton(onPressed: () {}, child: const Text("go to home")),
+          Text("Fruite: ${widget.fruitModel?.name}"),
+          TextButton(
+              onPressed: () {
+                context.go("/");
+              },
+              child: const Text("go to home")),
         ],
       ),
     );

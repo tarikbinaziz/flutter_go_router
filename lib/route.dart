@@ -8,8 +8,6 @@ import 'package:go_router/go_router.dart';
 
 GoRouter get routConfiguration => _router;
 
-
-
 /// do it by page_transition package
 class Routes {
   /*We are mapping all th eroutes here
@@ -123,8 +121,6 @@ Route generatedRoutes(RouteSettings settings) {
       );
       break;
 
-
-
     case Routes.loginOtpScreen:
       final Map<String, dynamic> args =
           settings.arguments as Map<String, dynamic>;
@@ -175,7 +171,6 @@ Route generatedRoutes(RouteSettings settings) {
     reverseDuration: 500.milisec,
   );
 }
-
 
 /// Now do with go_router
 
@@ -253,50 +248,69 @@ final GoRouter _router = GoRouter(
   routes: [
     // Core Routes
     GoRoute(
-      path: '/',  // Splash screen will be the first screen (home)
+      path: '/', // Splash screen will be the first screen (home)
       name: 'splash',
       builder: (context, state) => SplashScreen(),
     ),
     GoRoute(
-      path: '/loginScreen',  // Login screen route
+      path: '/loginScreen', // Login screen route
       name: 'loginScreen',
       builder: (context, state) => LoginScreen(),
     ),
     GoRoute(
-      path: '/onBoardingScreen',  // Onboarding screen route
+      path: '/onBoardingScreen', // Onboarding screen route
       name: 'onBoardingScreen',
       builder: (context, state) => OnBoardingScreen(),
     ),
     GoRoute(
-      path: '/signUpScreen',  // Signup screen route
+      path: '/signUpScreen', // Signup screen route
       name: 'signUpScreen',
       builder: (context, state) => SignUpScreen(),
     ),
     GoRoute(
-      path: '/bottomnavScreen',  // Bottom navigation screen route
+      path: '/bottomnavScreen', // Bottom navigation screen route
       name: 'bottomnavScreen',
       builder: (context, state) => BottomNavBar(),
     ),
 
     // Example of a screen with parameters
     GoRoute(
-      path: '/storedetailsScreen',  // Store details route
+      path: '/storedetailsScreen', // Store details route
       name: 'storeDetails',
       builder: (context, state) {
         /// 'extra' is used to pass non-URL data between screens.
         /// We pass 'storeIndex' as an integer and 'store' object.
         final storeIndex = state.extra as int;
-        final store = state.queryParams['store'] as Store;
+        final store = state.uri.queryParameters['store'] as Store;
         return StoreDetailsScreen(
           storeindex: storeIndex,
           store: store,
         );
       },
     ),
+    /*
+    // Example of a button triggering navigation
+ElevatedButton(
+  onPressed: () {
+    final int storeIndex = 1; // Example store index
+    final Store store = Store(name: "Example Store", id: 101); // Example store object
+
+    // Navigate using go_router
+    context.goNamed(
+      'storeDetails',        // The name of the route
+      extra: storeIndex,      // Passing the storeIndex as 'extra'
+      queryParams: {
+        'store': store,       // Passing the store object as a query parameter
+      },
+    );
+  },
+  child: Text('View Store Details'),
+)
+    */
 
     // Service Details Screen with arguments
     GoRoute(
-      path: '/servicedetailsScreen',  // Service details route
+      path: '/servicedetailsScreen', // Service details route
       name: 'serviceDetails',
       builder: (context, state) {
         // The 'extra' property is used to pass the Service object.
@@ -409,7 +423,7 @@ final GoRouter _router = GoRouter(
       builder: (context, state) => PrivacyPolicyScreen(),
     ),
   ],
-  debugLogDiagnostics: true,  // Enables logging for navigation events.
+  debugLogDiagnostics: true, // Enables logging for navigation events.
 );
 
 

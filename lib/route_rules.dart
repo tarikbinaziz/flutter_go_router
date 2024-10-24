@@ -503,3 +503,137 @@
 // Scalability: Adding more routes is simpler and the logic remains organized.
 // This setup will help scale your app as it grows, and go_router provides much more flexibility compared to manual route handling.
 // */
+
+
+
+// different approach
+
+/*
+GoRouter(
+  routes: [
+    ShellRoute(
+      builder: (context, state, child) {
+        return Scaffold(
+          body: child,
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: _calculateSelectedIndex(state.location),
+            onTap: (index) {
+              switch (index) {
+                case 0:
+                  context.go('/home');
+                  break;
+                case 1:
+                  context.go('/profile');
+                  break;
+                case 2:
+                  context.go('/settings');
+                  break;
+              }
+            },
+            items: const [
+              BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+              BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+              BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
+            ],
+          ),
+        );
+      },
+      routes: [
+        GoRoute(
+          path: '/home',
+          builder: (context, state) => HomeScreen(),
+        ),
+        GoRoute(
+          path: '/profile',
+          builder: (context, state) => ProfileScreen(),
+        ),
+        GoRoute(
+          path: '/settings',
+          builder: (context, state) => SettingsScreen(),
+        ),
+      ],
+    ),
+  ],
+);
+
+
+*/
+
+/*
+GoRoute(
+  path: '/bottomnavScreen',
+  name: 'bottomnavScreen',
+  builder: (context, state) => BottomNavBarScreen(),
+  routes: [
+    GoRoute(
+      path: 'home',
+      name: 'homeScreen',
+      builder: (context, state) => HomeScreen(),
+    ),
+    GoRoute(
+      path: 'profile',
+      name: 'profileScreen',
+      builder: (context, state) => ProfileScreen(),
+    ),
+    GoRoute(
+      path: 'settings',
+      name: 'settingsScreen',
+      builder: (context, state) => SettingsScreen(),
+    ),
+  ],
+),
+class BottomNavBarScreen extends StatefulWidget {
+  @override
+  _BottomNavBarScreenState createState() => _BottomNavBarScreenState();
+}
+
+class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
+  // Keep track of the selected index
+  int _selectedIndex = 0;
+
+  // Define the list of tabs with their paths
+  final List<String> _tabs = ['/bottomnavScreen/home', '/bottomnavScreen/profile', '/bottomnavScreen/settings'];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+    // Navigate to the selected tab using go_router
+    context.go(_tabs[index]);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: _buildBody(),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped, // Handle tap on navigation bar
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildBody() {
+    // Return the current GoRouter location as the body
+    return Router(
+      routerDelegate: GoRouter.of(context).routerDelegate,
+    );
+  }
+}
+
+
+*/

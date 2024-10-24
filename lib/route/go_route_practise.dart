@@ -4,6 +4,7 @@ import 'package:flutter_goroute/screens/fruite_screen.dart';
 import 'package:flutter_goroute/screens/home_screen%20copy.dart';
 import 'package:flutter_goroute/screens/home_screen.dart';
 import 'package:flutter_goroute/screens/profile_screen.dart';
+import 'package:flutter_goroute/screens/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 
 // Create keys for `root` & `section` navigator avoiding unnecessary rebuilds
@@ -16,8 +17,14 @@ final router = GoRouter(
     MyNavigatorObserver(),
   ],
   navigatorKey: _rootNavigatorKey,
-  initialLocation: '/',
+  initialLocation: '/splash',
   routes: [
+    // Splash Screen Route
+    GoRoute(
+      path: '/splash',
+      builder: (context, state) => SplashScreen(),
+    ),
+    // Main App Navigation (Bottom Nav with StatefulShellRoute)
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
         return ScaffoldWithNavbar(navigationShell);

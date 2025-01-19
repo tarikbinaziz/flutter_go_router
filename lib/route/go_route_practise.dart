@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_goroute/route/scaffold_nav.dart';
 import 'package:flutter_goroute/screens/fruite_screen.dart';
-import 'package:flutter_goroute/screens/home_screen%20copy.dart';
+import 'package:flutter_goroute/screens/home_details.dart';
 import 'package:flutter_goroute/screens/home_screen.dart';
 import 'package:flutter_goroute/screens/profile_screen.dart';
 import 'package:flutter_goroute/screens/splash_screen.dart';

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_goroute/screens/fruite_screen.dart';
-import 'package:go_router/go_router.dart';
 
 class HomeDetailsScreen extends StatefulWidget {
   const HomeDetailsScreen({super.key});
@@ -16,12 +14,7 @@ class _HomeDetailsScreenState extends State<HomeDetailsScreen> {
       appBar: AppBar(
         title: const Text("Home Details"),
       ),
-      body: TextButton(
-          onPressed: () {
-            context.go("/fruite",
-                extra: Fruit(name: "Banana", color: "yellow"));
-          },
-          child: const Text("go to")),
+      body: TextButton(onPressed: () {}, child: const Text("go to")),
     );
   }
 }

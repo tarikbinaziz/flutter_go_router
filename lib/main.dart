@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_goroute/route/go_route_practise.dart';
+import 'package:flutter_goroute/route/doc/go_route.dart';
 
 void main() {
+  CustomNavigationHelper.instance; // Initializing our navigation helper
   runApp(const MyApp());
 }
 
@@ -12,13 +13,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      routerConfig: router,
+      routerConfig: CustomNavigationHelper.router,
       title: 'Flutter Goroute',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      
     );
   }
 }

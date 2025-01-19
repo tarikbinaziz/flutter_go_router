@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_goroute/route/doc/go_route.dart';
 import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -18,8 +19,11 @@ class _HomeScreenState extends State<HomeScreen> {
       body: TextButton(
           onPressed: () {
             context.go(
-              "/homedetails",
+              AppRoute.homeDetails,
             );
+            // context.push(
+            //   AppRoute.homeDetails,
+            // );
           },
           child: const Text("go to")),
     );

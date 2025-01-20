@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class HomeDetailsScreen extends StatefulWidget {
-  const HomeDetailsScreen({super.key});
+  int id;
+  HomeDetailsScreen({super.key, required this.id});
 
   @override
   _HomeDetailsScreenState createState() => _HomeDetailsScreenState();
@@ -14,7 +15,12 @@ class _HomeDetailsScreenState extends State<HomeDetailsScreen> {
       appBar: AppBar(
         title: const Text("Home Details"),
       ),
-      body: TextButton(onPressed: () {}, child: const Text("go to")),
+      body: Column(
+        children: [
+          Text("Home Details: ${widget.id}"),
+          TextButton(onPressed: () {}, child: const Text("go to")),
+        ],
+      ),
     );
   }
 }

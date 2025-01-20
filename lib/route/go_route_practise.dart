@@ -22,7 +22,7 @@ final router = GoRouter(
     // Splash Screen Route
     GoRoute(
       path: '/splash',
-      builder: (context, state) => SplashScreen(),
+      builder: (context, state) => const SplashScreen(),
     ),
     // Main App Navigation (Bottom Nav with StatefulShellRoute)
     StatefulShellRoute.indexedStack(
@@ -39,7 +39,11 @@ final router = GoRouter(
               routes: [
                 GoRoute(
                   path: 'homedetails',
-                  builder: (context, state) => const HomeDetailsScreen(),
+                  builder: (context, state) {
+                    final int id = state.extra as int;
+
+                    return  HomeDetailsScreen( id: id,);
+                  },
                 ),
               ],
             ),

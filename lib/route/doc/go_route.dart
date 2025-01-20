@@ -11,7 +11,7 @@ import 'package:go_router/go_router.dart';
 class AppRoute {
   static const String splash = '/';
   static const String home = '/home';
-  static const String homeDetails = '/homeDetails';
+  static const String homeDetails = '/home/details';
   static const String cart = '/cart';
   static const String profile = '/profile';
   static const String signIn = '/signIn';
@@ -36,7 +36,7 @@ class CustomNavigationHelper {
   static final GlobalKey<NavigatorState> settingsTabNavigatorKey =
       GlobalKey<NavigatorState>();
 
-  BuildContext get context =>
+  static BuildContext get context =>
       router.routerDelegate.navigatorKey.currentContext!;
 
   GoRouterDelegate get routerDelegate => router.routerDelegate;
@@ -54,6 +54,7 @@ class CustomNavigationHelper {
             routes: [
               GoRoute(
                   path: AppRoute.home,
+                  // "/home",
                   pageBuilder: (context, GoRouterState state) {
                     return getPage(
                       child: const HomeScreen(),
@@ -63,9 +64,13 @@ class CustomNavigationHelper {
                   routes: [
                     GoRoute(
                       path: AppRoute.homeDetails,
+                      // "details",
                       pageBuilder: (context, state) {
+                        final arguments = state.extra as int;
                         return getPage(
-                          child: const HomeDetailsScreen(),
+                          child: HomeDetailsScreen(
+                            id: arguments,
+                          ),
                           state: state,
                         );
                       },
@@ -119,8 +124,10 @@ class CustomNavigationHelper {
         parentNavigatorKey: parentNavigatorKey,
         path: AppRoute.homeDetails,
         pageBuilder: (context, state) {
+          final arguments = state.extra as int;
           return getPage(
-            child: const HomeDetailsScreen(),
+            child:  HomeDetailsScreen(
+              id: arguments,),
             state: state,
           );
         },

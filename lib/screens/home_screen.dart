@@ -18,9 +18,14 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: TextButton(
           onPressed: () {
-            context.go(
-              AppRoute.homeDetails,
-            );
+            // CustomNavigationHelper.router.push(
+            //   AppRoute.homeDetails,
+            // );
+            // CustomNavigationHelper.router.go(
+            //   AppRoute.homeDetails,
+            //   // AppRoute.homeDetails,
+            // );
+            context.go(AppRoute.homeDetails,extra: 1);
             // context.push(
             //   AppRoute.homeDetails,
             // );
